@@ -1,4 +1,4 @@
-'''from django import forms
+from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from . import models
@@ -13,6 +13,18 @@ class RegisterForm(forms.ModelForm):
 		model	= models.User
 		fields	= ('phone_number', )
 
+    def save(self, commit=True):
+		# Save the password in hashed format
+
+		user = super().save(commit=False)
+		user.set_password(self.cleaned_data['mpassword'])
+
+		if commit:
+			user.save()
+
+		return user
+
+	'''
 	def clean_phonenumber(self):
 
 		phone_number	= self.cleaned_data.get('phone_number')
@@ -32,15 +44,4 @@ class RegisterForm(forms.ModelForm):
 			raise form.ValidationError("Passwords do not match.")
 
 		return repeat_pw
-
-    def save(self, commit=True):
-		# Save the password in hashed format
-
-		user = super().save(commit=False)
-		user.set_password(self.cleaned_data['mpassword'])
-
-		if commit:
-			user.save()
-
-		return user
-'''
+	'''

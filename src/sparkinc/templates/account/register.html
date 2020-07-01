@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h3> Sign Up </h3>
+	<form method='POST' id='register' action=''>
+		{% csrf_token %}
+
+		{{ form.as_p }}
+
+		<button class='btn btn-outline-info' type='submit' name='Create User'> Sign Up </button>
+	</form>
+</body>
+</html>

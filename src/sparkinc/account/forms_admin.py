@@ -13,16 +13,6 @@ class UserAdminCreationForm(forms.ModelForm):
 		model	= models.User
 		fields	= ('phone_number', )
 
-	def clean_repeatpw(self):
-
-		mpassword	= self.cleaned_data.get('mpassword')
-		repeat_pw	= self.cleaned_data.get('repeat_pw')
-
-		if mpassword and repeat_pw and mpassword != repeat_pw:
-			raise form.ValidationError("Password does not match.")
-
-		return repeat_pw
-
 	def save(self, commit=True):
 		# Save the password in hashed format
 
@@ -34,6 +24,18 @@ class UserAdminCreationForm(forms.ModelForm):
 
 		return user
 
+	'''
+	def clean_repeatpw(self):
+
+		mpassword	= self.cleaned_data.get('mpassword')
+		repeat_pw	= self.cleaned_data.get('repeat_pw')
+
+		if mpassword and repeat_pw and mpassword != repeat_pw:
+			raise form.ValidationError("Password does not match.")
+
+		return repeat_pw
+	'''
+
 class UserAdminChangeForm(forms.ModelForm):
 
 	password = ReadOnlyPasswordHashField()
@@ -43,6 +45,8 @@ class UserAdminChangeForm(forms.ModelForm):
 		model	= models.User
 		fields	= ('phone_number', 'password', 'active', 'admin')
 
+	'''
 	def clean_password(self):
 
 		return self.initial['password']
+	'''

@@ -17,3 +17,22 @@ class GroupViewSet(viewsets.ModelViewSet):
 	# API endpoint that allows authentication groups to be viewed or edited.
 	queryset			= Group.objects.all().order_by('id')
 	serializer_class	= serializers.GroupSerializer
+
+# ------------------------------ Pages -------------------------------------
+from . import forms
+
+class Pages:
+
+	@staticmethod
+	def register(request):
+
+		form = forms.RegisterForm()
+		if request.method == 'POST':
+			form = forms.RegisterForm(request.POST)
+
+			if form.is_valid():
+				form.save()
+
+		context = {'form': form}
+
+		return render(request, 'account/register.html', context)
