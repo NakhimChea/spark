@@ -10,8 +10,8 @@ router.register(r'group', views.GroupViewSet)
 
 
 urlpatterns = [
-    url(r'', include(router.urls)),
+	url(r'', include(router.urls)),
 
-    url(r'^register/', views.Pages.register),
+	url(r'^register/', views.Pages.register),
 
 ]

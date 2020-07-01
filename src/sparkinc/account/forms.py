@@ -13,7 +13,7 @@ class RegisterForm(forms.ModelForm):
 		model	= models.User
 		fields	= ('phone_number', )
 
-    def save(self, commit=True):
+	def save(self, commit=True):
 		# Save the password in hashed format
 
 		user = super().save(commit=False)
