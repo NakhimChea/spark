@@ -13,5 +13,9 @@ urlpatterns = [
 	url(r'', include(router.urls)),
 
 	url(r'^register/', views.Pages.register),
+	url(r'^login/', views.Pages.login, name='login'),
+	url(r'^logout/', views.Pages.logout, name='logout'),
+	url(r'^home/', views.Pages.home, name='home'),
+	url(r'^dashboard/', views.Pages.dashboard, name='dashboard'),
 
 ]

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<h3> Sign Up </h3>
+	<h3> Log In </h3>
 	<div>
 		{% for message in messages %}
 			<p id='messages'>{{ message }}</p>
 		{% endfor %}
 	</div>
 	<div>
-		<form method='POST' id='register' action=''>
+		<form method='POST' id='login' action=''>
 			{% csrf_token %}
 
 			{{ form.as_p }}
 
-			<button class='btn btn-outline-info' type='submit' name='Create User'> Sign Up </button>
+			<button class='btn btn-outline-info' type='submit' name='Login User'> Log In </button>
 		</form>
 	</div>
 </body>
